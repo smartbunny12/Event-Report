@@ -26,15 +26,15 @@ public class MainActivity extends AppCompatActivity implements EventFragment.OnI
                     fragment).commit();
         }*/
 
-        //add list view
+        //add list view; replace = remove + add
         mListFragment = new EventFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.event_container,
+        getSupportFragmentManager().beginTransaction().replace(R.id.event_container,
                 mListFragment).commit();
 
         //add Gridview
         if (isTablet()){
             mGridFragment = new CommentFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.commment_container,
+            getSupportFragmentManager().beginTransaction().replace(R.id.commment_container,
                     mGridFragment).commit();
         }
     }

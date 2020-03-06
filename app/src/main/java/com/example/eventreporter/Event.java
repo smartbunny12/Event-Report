@@ -7,6 +7,7 @@ public class Event {
     private String title;
     private String address;
     private String description;
+    private String url;
 
     /**
      *  Constructor

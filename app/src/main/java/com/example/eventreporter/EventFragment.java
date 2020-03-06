@@ -20,9 +20,12 @@ import android.widget.ListView;
 public class EventFragment extends Fragment {
 
 
- //   public EventFragment() {
- //       // Required empty public constructor
-//    }
+ /*
+    public EventFragment() {
+        // Required empty public constructor
+     }
+ */
+
     OnItemSelectListener mCallback;
 
     @Override
@@ -77,7 +80,7 @@ public class EventFragment extends Fragment {
                  "Event1","Event2","Event3",
                  "Event4","Event5","Event6",
                  "Event7","Event8","Event9",
-                 "Event10","Event11","Event12"
+                 "Event10"
          };
          return names;
     }

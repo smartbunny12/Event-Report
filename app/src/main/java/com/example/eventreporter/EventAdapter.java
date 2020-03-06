@@ -1,11 +1,17 @@
 package com.example.eventreporter;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -33,6 +39,7 @@ public class EventAdapter extends BaseAdapter {
         return position;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         if (convertView == null) {
@@ -48,7 +55,15 @@ public class EventAdapter extends BaseAdapter {
                 R.id.event_address);
         TextView eventDescription = (TextView) convertView.findViewById(
                 R.id.event_description);
+        eventTitle.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+            }
+        });
+        ImageView imageView = convertView.findViewById(R.id.event_thumbnail);
+        Picasso.get().load("http://www.urbanfarmhub.org/wp-content/uploads/2012/07/apple.png").into(imageView);
 
+        eventTitle.setTextColor(context.getColor(R.color.colorAccent));
         Event r = eventData.get(position);
         eventTitle.setText(r.getTitle());
         eventAddress.setText(r.getAddress());
