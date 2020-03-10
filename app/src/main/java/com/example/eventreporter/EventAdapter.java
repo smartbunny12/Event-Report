@@ -49,6 +49,7 @@ public class EventAdapter extends BaseAdapter {
                     parent, false);
         }
 
+        // acquire the element and then set
         TextView eventTitle = (TextView) convertView.findViewById(
                 R.id.event_title);
         TextView eventAddress = (TextView) convertView.findViewById(

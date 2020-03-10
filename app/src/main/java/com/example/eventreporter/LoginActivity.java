@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,12 +27,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //write a message to database, 有错误
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //write a message to database
+        //FirebaseDatabase database = FirebaseDatabase.getInstance();
         //DatabaseReference myRef = database.getReference("message");
 
         //myRef.setValue("Hello, world");
 
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         mUsernameEditText = (EditText) findViewById(R.id.editTextLogin);
         mPasswordEditText = (EditText) findViewById(R.id.editTextPassword);
         mSubmitButton = (Button) findViewById(R.id.submit);
@@ -44,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String username = mUsernameEditText.getText().toString();
                 final String password = Utils.md5Encryption(mPasswordEditText.getText().toString());
+                //final String password = mPasswordEditText.getText().toString();
                 final User user = new User(username, password, System.currentTimeMillis());
                 mDatabase.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -72,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String username = mUsernameEditText.getText().toString();
                 final String password = Utils.md5Encryption(mPasswordEditText.getText().toString());
+                //final String password = mPasswordEditText.getText().toString();
                 mDatabase.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
