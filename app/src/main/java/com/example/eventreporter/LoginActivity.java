@@ -3,6 +3,7 @@ package com.example.eventreporter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -81,8 +82,12 @@ public class LoginActivity extends AppCompatActivity {
                         if (dataSnapshot.hasChild(username) &&
                                 (password.equals(dataSnapshot.child(username).child("password").getValue()))) {
                             //Log.i("Your log", "You successfully login");
-                            Toast.makeText(getBaseContext(), "You successfully login",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getBaseContext(), "You successfully login", Toast.LENGTH_SHORT).show();
+                            // when login, jump to main activity page
+                            Intent myIntent = new Intent(LoginActivity.this, EventActivity.class);
+                            Utils.username = username;
+                            startActivity(myIntent);
+                            //finish(); // click go back can't see login page
                         } else {
                             Toast.makeText(getBaseContext(), "Please login again",
                                     Toast.LENGTH_SHORT).show();
