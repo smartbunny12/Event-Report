@@ -43,7 +43,7 @@ public class EventReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_report);
-
+        Log.e("receive","jintao2");
         //auth
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -93,14 +93,14 @@ public class EventReportActivity extends AppCompatActivity {
             private List<String> mAddressList = new ArrayList<String>();
 
             @Override
-            protected Void doInBackground(Void...utls){
+            protected Void doInBackground(Void... urls){
                 mAddressList = mLocationTracker.getCurrentLocationViaJSON(latitude, longitude);
                 return null;
             }
 
             @Override
             protected void onPostExecute(Void input){
-                if (mAddressList.size() >=3){
+                if (mAddressList.size() >= 3){
                     mEditTextLocation.setText(mAddressList.get(0) + "," + mAddressList.get(1) +
                             "," + mAddressList.get(2) + "," + mAddressList.get(3));
                 }

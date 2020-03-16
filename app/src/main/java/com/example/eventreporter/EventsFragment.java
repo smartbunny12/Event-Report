@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class EventsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent eventReportIntent = new Intent(getActivity(), EventReportActivity.class);
+                System.out.println("start"+"jintao");
                 startActivity(eventReportIntent);
             }
         });
