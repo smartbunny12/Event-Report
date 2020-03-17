@@ -42,12 +42,21 @@ public class Event {
         this.description = description;
     }
 
-    public int getLike() {
-        return like;
+    public String getImgUrl() {
+        return imgUrl;
     }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
 
     public void setLike(int like) {
         this.like = like;
+    }
+
+    public int getLike() {
+        return like;
     }
 
     public String getId() {
@@ -72,13 +81,5 @@ public class Event {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
     }
 }

@@ -9,24 +9,14 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ListView;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.google.android.gms.common.api.Api;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -175,33 +165,14 @@ public class LocationTracker implements LocationListener {
 
     // convert lat lon to street name, zip code etc
     public static JSONObject getLocationInfo(double lat, double lng){
-        //HttpGet httpGet = new
-                //HttpGet("http://maps.googleapis.com/maps/api/geocode/json?latlng="+ lat+","+lng +"&key=AIzaSyBih-tXYn3-k30B2rZgqWqZ51qg-m7ab4o");
-        //key=AIzaSyBih-tXYn3-k30B2rZgqWqZ51qg-m7ab4o
-        //sensor=true
-        //http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&key=AIzaSyBih-tXYn3-k30B2rZgqWqZ51qg-m7ab4o
-////
-//        HttpClient client = new DefaultHttpClient();
-//        HttpResponse response;
+       //yaoshiAIzaSyBih-tXYn3-k30B2rZgqWqZ51qg-m7ab4o； sensor=true
+
         StringBuilder stringBuilder = new StringBuilder();
-//
-//        try {
-//            response = client.execute(httpGet);
-//            HttpEntity entity = response.getEntity();
-//            InputStream stream = entity.getContent();
-//            int b;
-//            while ((b = stream.read()) != -1){
-//                stringBuilder.append((char) b);
-//            }
-//
-//        } catch (ClientProtocolException e){
-//
-//        } catch (IOException e){
-//
-//        }
+
 
         try {
-            URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?latlng="+ lat + "," + lng +"&key=AIzaSyBih-tXYn3-k30B2rZgqWqZ51qg-m7ab4o");
+            URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?latlng="+ lat + "," + lng +"&sensor=true");
+            //key =
             System.out.println(url.toString());
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
             connection.setRequestProperty("User-Agent", "");
@@ -243,6 +214,7 @@ public class LocationTracker implements LocationListener {
 
                 int i = 0;
                 do {
+                    //Log.i("index", String.valueOf(i));
                     JSONObject r = results.getJSONObject(i);
                     if (!r.getString("formatted_address").equals("")){
                         String formatted_address[] = r.getString("formatted_address").split(",");
@@ -259,6 +231,7 @@ public class LocationTracker implements LocationListener {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        //Log.i("mylog",address.toString());
         return address;
     }
 
