@@ -173,7 +173,7 @@ public class LocationTracker implements LocationListener {
         try {
             URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?latlng="+ lat + "," + lng +"&sensor=true");
             //key =
-            System.out.println(url.toString());
+            //System.out.println(url.toString());
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
             connection.setRequestProperty("User-Agent", "");
             connection.setRequestMethod("GET");

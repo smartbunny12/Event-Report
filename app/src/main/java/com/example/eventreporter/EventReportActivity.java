@@ -125,7 +125,7 @@ public class EventReportActivity extends AppCompatActivity {
         final double longitude = mLocationTracker.getLongitude();
 
         new AsyncTask<Void, Void, Void>(){
-            private List<String> mAddressList = new ArrayList<String>();
+            private List<String> mAddressList = new ArrayList<>();
 
             @Override
             protected Void doInBackground(Void... urls){
@@ -225,7 +225,7 @@ public class EventReportActivity extends AppCompatActivity {
 
 
     /**
-     * Upload image picked up from gallery to Firebase Cloud storage
+     * Upload image picked up from gallery to Firebase Cloud storage and database
      * @param
      */
     private void uploadImage(final String eventId){

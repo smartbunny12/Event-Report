@@ -12,6 +12,7 @@ public class Event {
     private long time;
     private String username;
     private String imgUrl;
+    private int CommentNumber;
 
     public int getCommentNumber() {
         return CommentNumber;
@@ -21,7 +22,7 @@ public class Event {
         CommentNumber = commentNumber;
     }
 
-    private int CommentNumber;
+
 
     public Event(){}
     /**
