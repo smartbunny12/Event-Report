@@ -165,14 +165,14 @@ public class LocationTracker implements LocationListener {
 
     // convert lat lon to street name, zip code etc
     public static JSONObject getLocationInfo(double lat, double lng){
-       //yaoshiAIzaSyBih-tXYn3-k30B2rZgqWqZ51qg-m7ab4o； sensor=true
+       //yaoshiAIzaSyBih-tXYn3-k30B2rZgqWqZ51qg-m7ab4o； &sensor=true
 
         StringBuilder stringBuilder = new StringBuilder();
 
 
         try {
-            URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?latlng="+ lat + "," + lng +"&sensor=true");
-            //key =
+            URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?latlng="+ lat + "," + lng +"&sensor=True");
+            //+"&key=AI..."
             //System.out.println(url.toString());
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
             connection.setRequestProperty("User-Agent", "");

@@ -26,8 +26,12 @@
             android:name=".EventReportActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustResize"></activity>
-        <activity android:name=".EventActivity" />
+        <activity android:name=".EventActivity">
+
+        </activity>
+
         <activity android:name=".loginTest" />
+
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -43,6 +47,10 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBjltHtEAQdGCm4VWTH-lbUwTCJgFfSY48" />
     </application>
 
 </manifest>

@@ -160,6 +160,8 @@ public class EventReportActivity extends AppCompatActivity {
         event.setDescription(description);
         //event.setImgUrl(downloadUrl);
         //assert downloadUrl != null;
+        event.setLatitude(mLocationTracker.getLatitude());
+        event.setLongitude(mLocationTracker.getLongitude());
         event.setTime(System.currentTimeMillis());
         event.setUsername(Utils.username);
         String key = database.child("events").push().getKey();
