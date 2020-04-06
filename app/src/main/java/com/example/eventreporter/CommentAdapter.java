@@ -18,8 +18,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -125,7 +123,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return viewHolder;
     }
 
-    // replace the contents of a view (invoked by the layout manager)
+    // replace the contents of a view (invoked by the layout manager）
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position){
         switch (holder.getItemViewType()){
@@ -140,6 +138,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
+    // bind data and view
     private void configureEventView(final EventViewHolder holder){
         holder.eventUser.setText(event.getUsername());
         holder.eventTitle.setText(event.getTitle());

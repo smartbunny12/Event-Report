@@ -53,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String username = mUsernameEditText.getText().toString();
                 final String password = Utils.md5Encryption(mPasswordEditText.getText().toString());
-                //final String password = mPasswordEditText.getText().toString();
                 final User user = new User(username, password, System.currentTimeMillis());
                 mDatabase.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

@@ -25,7 +25,7 @@ import okhttp3.internal.Util;
 
 public class CommentActivity extends AppCompatActivity {
 
-    private DatabaseReference mDatabaseReferene;
+    private DatabaseReference mDatabaseReference;
     private RecyclerView mRecyclerView;
     private EditText mEditTextComment;
     private CommentAdapter commentAdapter;
@@ -43,7 +43,7 @@ public class CommentActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.comment_recycler_view);
         mEditTextComment = (EditText) findViewById(R.id.comment_edittext);
         mCommentSubmitButton = (Button) findViewById(R.id.comment_submit);
-        mDatabaseReferene = FirebaseDatabase.getInstance().getReference();
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
         commentAdapter = new CommentAdapter(this);
         mRecyclerView.setHasFixedSize(true);
@@ -62,7 +62,7 @@ public class CommentActivity extends AppCompatActivity {
     }
 
     private void getData(final String eventId, final CommentAdapter commentAdapter){
-        mDatabaseReferene.addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 DataSnapshot commentSnapshot = dataSnapshot.child("comments");
@@ -73,10 +73,14 @@ public class CommentActivity extends AppCompatActivity {
                         comments.add(comment);
                     }
                 }
-                mDatabaseReferene.getRef().child("events").child(eventId).
+                // update the comment number in the events table
+                mDatabaseReference.getRef().child("events").child(eventId).
                         child("commentNumber").setValue(comments.size());
+
+                // set comments
                 commentAdapter.setComments(comments);
 
+                // set events: the first row in the view
                 DataSnapshot eventSnapshot = dataSnapshot.child("events");
                 for (DataSnapshot noteDataSnapshot: eventSnapshot.getChildren()) {
                     Event event = noteDataSnapshot.getValue(Event.class);
@@ -109,9 +113,9 @@ public class CommentActivity extends AppCompatActivity {
         comment.setEventId(eventId);
         comment.setDescription(description);
         comment.setTime(System.currentTimeMillis());
-        String key = mDatabaseReferene.child("comments").push().getKey();
+        String key = mDatabaseReference.child("comments").push().getKey();
         comment.setCommentId(key);
-        mDatabaseReferene.child("comments").child(key).setValue(comment, new DatabaseReference.
+        mDatabaseReference.child("comments").child(key).setValue(comment, new DatabaseReference.
                 CompletionListener(){
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference){
